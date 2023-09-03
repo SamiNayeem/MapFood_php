@@ -5,11 +5,21 @@
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
         $email = $_POST['email']; 
+        $contact = $_POST['contact'];
         $password = $_POST['password'];
         $confirmpassword = $_POST['confirmpassword'];
         $password = password_hash($password, PASSWORD_DEFAULT);
         $confirmpassword = password_hash($confirmpassword, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users VALUES ('', '$first_name', '$last_name', '$email', '$password')";
+        $duplicate = "SELECT * FROM users WHERE email='$email'";
+        if(mysqli_num_rows(mysqli_query($conn, $duplicate))>0){
+            
+            echo "<script>alert('Email already exists!')</script>";
+            header("Location: registration.php");
+            exit();
+            
+        }
+        
+        $sql = "INSERT INTO users VALUES ('', '$first_name', '$last_name', '$email', '$contact', '$password')";
         $result = mysqli_query($conn, $sql);
         if($result){
             echo "<script>alert('Registration Successful!')</script>";
@@ -19,6 +29,7 @@
         }
         
     }
+
 ?>
 
 
@@ -44,7 +55,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Map Food</a>
+                <a class="navbar-brand" href="index.php">Map Food</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -123,6 +134,10 @@
                                     <input type="text" class="form-control" name="email" required>
                                     <label class="form-control-placeholder" for="email">E-mail</label>
                                 </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="contact" required>
+                                    <label class="form-control-placeholder" for="contact">Phone</label>
+                                </div>
                                 <div class="form-group">
                                     <input id="password-field" type="password" name="password" class="form-control" required>
                                     <label class="form-control-placeholder" for="password" >Password</label>
@@ -186,9 +201,7 @@
                             <div class="d-none" id="submitSuccessMessage">
                                 <div class="text-center mb-3 mt-2 text-white">
                                     <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    
                                 </div>
                             </div>
                             <!-- Submit error message-->

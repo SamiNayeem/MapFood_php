@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['email'] = $email;
-                header("location: dashboard.php");
+                header("location: dashboard.php#restaurantSelection");
             } 
             else{
                 $showError = "Invalid Credentials";
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Map Food</a>
+                <a class="navbar-brand" href="index.php">Map Food</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -187,9 +187,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <div class="d-none" id="submitSuccessMessage">
                                 <div class="text-center mb-3 mt-2 text-white">
                                     <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    
                                 </div>
                             </div>
                             <!-- Submit error message-->

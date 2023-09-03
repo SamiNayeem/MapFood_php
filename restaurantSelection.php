@@ -3,23 +3,17 @@
 
     // session_start();
 
-    // if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $orderStation = $_POST['orderStation'];
 
-    //     $orderStation = $_POST['orderStation'];
-    //     $sql = "SELECT * FROM restaurants WHERE location = '$orderStation'";
-    //     $result = mysqli_query($conn, $sql);
-    //     $count = mysqli_num_rows($result);
-    //     if($count == 0) {
-    //         echo "<script> no restaurant found </script>";
-    //     }
-    //     else {
-    //         // header("Location: restaurantSelection.php");
-    //     }
-    // }
+    // $name = $_POST['name'];
+
+    $sql = "SELECT name, contact FROM restaurants WHERE location = '$orderStation'";
+
+    // $getRestaurantID = "SELECT id FROM restaurants WHERE location = '$orderStation' AND name = '$name' ";
+
+    // $linkAddress = "$getRestaurantID'.php'";
     
-    if(isset($_POST['showRestaurants'])){
-        header("Location: restaurantSelection.php#availableRestaurants");
-    }
+    
 
 ?>
 
@@ -40,6 +34,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/style.css" rel="stylesheet" />
         <link href="css/bookingStyle.css" rel="stylesheet" />
+        <link href="css/table.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -88,57 +83,78 @@
             </div>
         </section>
         <!-- Restaurant Selection-->
-        <section id="restaurantSelection">
 
+        <section id="availableRestaurants">
+        <div class="container mt-5 px-2">
+    
+    <div class="mb-2 d-flex justify-content-between align-items-center">
         
-        <div id="booking" class="section">
-		<div class="section-center">
-			<div class="container">
-				<div class="row">
-					<div class="booking-form">
-						<form action="restaurantSelection.php#availableRestaurants" method="post">
-							
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Current Station</span>
-										<select name="currentStation" id="currentStation" class="form-control">
-                            <option value="Cumilla" name="cumilla">Cumilla</option>
-                            <option value="Bramhanbaria" name="bramhanbaria">Bramhanbaria</option>
-                            <option value="Feni" name="feni">Feni</option>
-                        </select>
-                        <span class="select-arrow"></span>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Order Station</span>
-										<select name="orderStation" id="orderStation" class="form-control">
-                            <option value="Cumilla" name="cumilla">Cumilla</option>
-                            <option value="Bramhanbaria" name="bramhanbaria">Bramhanbaria</option>
-                            <option value="Feni" name="feni">Feni</option>
-                        </select>
-                        <span class="select-arrow"></span>
-									</div>
-								</div>
-							</div>
-							
-							<div class="row">
-								
-								<div class="col-md-3">
-									<div class="form-btn" >
-										
-                                        <input type="submit" value="Show Restaurants" class="submit-btn" name="showRestaurants">
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-    </section>
+        
+        
+        
+        
+    </div>
+    <div class="table-responsive">
+    <table class="table table-responsive table-borderless">
+        
+      <thead>
+        <tr class="bg-light">
+
+          <th scope="col" width="20%">Restaurants</th>
+          <th scope="col" width="10%">Contact</th>
+          <th scope="col" width="20%">Check Menu</th>
+          
+          
+      </thead>
+  <tbody>
+
+    <!-- <form action="menu.php" method="post"> -->
+    <?php
+    foreach($conn->query($sql) as $row){
+        echo "<tr>";
+        echo "<td>".$row['name']."</td>";
+        echo "<td>".$row['contact']."</td>";
+        // echo "<td><a href='menu.php?id=$getRestaurantID'>Check Menu</a></td>";
+        echo "<td><a href='menu.php'>Check Menu</a></td>";
+        echo "</tr>";
+    }
+
+    ?>
+    <!-- </form> -->
+<!-- 
+    <input type="submit" value="Show Menu" name="menubtn"> -->
+    
+    <!-- <tr>
+      <th scope="row"><input class="form-check-input" type="checkbox"></th>
+      <td>12</td>
+      <td>1 Oct, 21</td>
+      <td><i class="fa fa-check-circle-o green"></i><span class="ms-1">Paid</span></td>
+      <td><img src="https://i.imgur.com/VKOeFyS.png" width="25"> Althan Travis</td>
+      <td>Wirecard for figma</td>
+      <td class="text-end"><span class="fw-bolder">$0.99</span> <i class="fa fa-ellipsis-h  ms-2"></i></td>
+    </tr>
+    
+    <tr>
+      <th scope="row"><input class="form-check-input" type="checkbox"></th>
+      <td>14</td>
+      <td>12 Oct, 21</td>
+      <td><i class="fa fa-dot-circle-o text-danger"></i><span class="ms-1">Failed</span></td>
+      <td><img src="https://i.imgur.com/nmnmfGv.png" width="25"> Tomo arvis</td>
+      <td>Altroz furry</td>
+      <td class="text-end"><span class="fw-bolder">$0.19</span> <i class="fa fa-ellipsis-h  ms-2"></i></td>
+    </tr> -->
+    
+    
+    
+  </tbody>
+</table>
+  
+  </div>
+    
+</div>
+
+        </section>
+        
 
 
 
@@ -179,7 +195,7 @@
                     </tr>
                 </table>
             </form> -->
-        </section>
+        <!-- </section> -->
         <!-- Signup-->
         <section class="signup-section" id="signup">
             <div class="container px-4 px-lg-5">
