@@ -7,13 +7,14 @@
 
     // $name = $_POST['name'];
 
-    $sql = "SELECT name, contact FROM restaurants WHERE location = '$orderStation'";
+    $sql = "SELECT id, name, contact FROM restaurants WHERE location = '$orderStation'";
 
     // $getRestaurantID = "SELECT id FROM restaurants WHERE location = '$orderStation' AND name = '$name' ";
 
     // $linkAddress = "$getRestaurantID'.php'";
     
     
+
 
 ?>
 
@@ -112,10 +113,12 @@
     <?php
     foreach($conn->query($sql) as $row){
         echo "<tr>";
-        echo "<td>".$row['name']."</td>";
+        $getRestaurantID = $row['id'];
+        $restaurantName = $row['name'];
+        echo "<td>".$restaurantName."</td>";
         echo "<td>".$row['contact']."</td>";
-        // echo "<td><a href='menu.php?id=$getRestaurantID'>Check Menu</a></td>";
-        echo "<td><a href='menu.php'>Check Menu</a></td>";
+        echo "<td><a href='menu.php?id=$getRestaurantID'>Check Menu</a></td>";
+        // echo "<td><a href='menu.php'>Check Menu</a></td>";
         echo "</tr>";
     }
 

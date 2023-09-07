@@ -11202,3 +11202,8 @@ body {
   padding: 5rem 0;
 }
 
+@media (min-width: 992px) {
+  .footer {
+    padding: 5rem 0;
+  }
+}
