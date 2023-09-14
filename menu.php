@@ -8,10 +8,22 @@ require_once "dbconnect.php";
 
 $getMenu = "SELECT item_name, description, price FROM menu WHERE restaurant = $id";
 
+
+
 $result = mysqli_query($conn, $getMenu);
 // foreach($result as $row){
 //     echo $row['item_name'] . " " . $row['description'] . " " . $row['price'] . "<br>";
 // }
+
+//print the name of the restaurant
+$getRestaurantName = "SELECT name FROM restaurants WHERE id = $id";
+$result2 = mysqli_query($conn, $getRestaurantName);
+foreach($result2 as $row){
+    $name = $row['name'];
+}
+
+
+
 
 ?>
 
@@ -32,6 +44,7 @@ $result = mysqli_query($conn, $getMenu);
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/style.css" rel="stylesheet" />
+        <!-- <link href="css/style2.css" rel="stylesheet" /> -->
         <link href="css/bookingStyle.css" rel="stylesheet" />
         <link href="css/table.css" rel="stylesheet" />
     </head>
@@ -67,12 +80,12 @@ $result = mysqli_query($conn, $getMenu);
     <div class="mb-2 d-flex justify-content-between align-items-center">
         
         
-        
+        <h1>Welcome to <?php echo" $name "?></h1>
         
         
     </div>
     <div class="table-responsive" id=#menuTable>
-    <table class="table table-responsive table-borderless">
+    <!-- <table class="table table-responsive table-borderless" id="cart">
         
       <thead>
         <tr class="bg-light">
@@ -86,24 +99,83 @@ $result = mysqli_query($conn, $getMenu);
       </thead>
   <tbody>
 
+    <form >
     <?php
-    foreach($result as $row){
-        echo "<tr>";
-        echo "<td>" . $row['item_name'] . "</td>";
-        echo "<td>" . $row['description'] . "</td>";
-        echo "<td>" . $row['price'] . "</td>";
-        echo "<td><input type='number' name='quantity' id='quantity' min='0' max='100'></td>";
-        echo "</tr>";
-    }
+ 
+
+    // foreach ($result as $row) {
+    //     echo "<tr>";
+    //     $item_name = $row['item_name'];
+    //     $price = $row['price'];
+
+    //     echo "<td>" . $item_name . "</td>";
+    //     echo "<td>" . $row['description'] . "</td>";
+    //     echo "<td class='price'>" . $price . "</td>";
+    //     echo "<td><input type='number' class='quantity' name='quantity' min='0' max='100'></td>";
+    //     echo "</tr>";
+    
+    // }
 
     ?>
+    <tr>
+        <td colspan="4" align="center"><input type="submit" name="addCart" class="btn btn-primary" value="Go to Cart"></td>
+    </tr>
+    
+    
+    </form>
+    
 
 
     
-    
+
     
   </tbody>
-</table>
+</table> -->
+
+
+<table class="table table-responsive table-borderless">
+
+    <thead>
+        <tr class="bg-light">
+
+          <th scope="col" width="10%">Item</th>
+          <th scope="col" width="10%">Description</th>
+          <th scope="col" width="5%">Price</th>
+          <th scope="col" width="5%">Quantity</th>
+          
+          
+      </thead>
+
+
+    <tbody id="cart">
+
+        <form action="checkout.php" method="post">
+            <?php
+
+    
+            foreach ($result as $row) {
+                echo "<tr>";
+                $item_name = $row['item_name'];
+                $price = $row['price'];
+
+                echo "<td>" . $item_name . "</td>";
+                echo "<td>" . $row['description'] . "</td>";
+                echo "<td class='price'>" . $price . "</td>";
+                echo "<td><input type='number' class='quantity' name='quantity' min='0' max='100' value='0' ></td>";
+                echo "</tr>";
+            }
+            ?>
+            </tbody>
+            <tr>
+                <td colspan="4" align='center'><input type="submit" value="Checkout" class='btn btn-primary'></td>
+            </tr>
+            
+            </table>
+        </form>
+
+    
+<p>Delivery Charge: BDT 60</p>
+<p>Total: BDT <span id="total">0.00</span></p>
   
   </div>
     
@@ -251,5 +323,6 @@ $result = mysqli_query($conn, $getMenu);
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="js/totalAmount.js"></script>
     </body>
 </html>
