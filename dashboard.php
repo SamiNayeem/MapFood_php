@@ -116,6 +116,8 @@
 										<select name="orderStation" id="orderStation" class="form-control">
                             <option value="Cumilla" name="cumilla">Cumilla</option>
                             <option value="Bramhanbaria" name="bramhanbaria">Bramhanbaria</option>
+                            <option value="Kasba" name="kasba">Kasba</option>
+                            <option value="Laksham" name="laksham">Laksham</option>
                             <option value="Feni" name="feni">Feni</option>
                         </select>
                         <span class="select-arrow"></span>
