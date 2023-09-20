@@ -62,9 +62,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php#about">About</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="#projects">Our Services</a></li> -->
-                        <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php#signup">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="login.php#login">Login</a></li>
                     </ul>
                 </div>
