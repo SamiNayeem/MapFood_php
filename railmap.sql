@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2023 at 04:21 PM
+-- Generation Time: Oct 05, 2023 at 08:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -90,7 +90,19 @@ INSERT INTO `menu` (`id`, `item_name`, `description`, `restaurant`, `price`) VAL
 (25, 'Churro Ice Cream Sundae', 'Indulge your sweet tooth with crispy churros dusted in cinnamon sugar, served with a scoop of vanill', 28, 100.00),
 (26, 'Hawaiian Poke Bowl', 'A taste of the tropics with fresh cubes of tuna or salmon, avocado, cucumber, edamame, and seaweed s', 24, 150.00),
 (27, 'Italian Sausage and Peppers', 'Sautéed Italian sausage with colorful bell peppers and onions, served in a rustic tomato sauce and a', 21, 160.00),
-(28, 'Homemade Apple Pie', 'End your meal on a comforting note with a slice of warm, flaky apple pie, served with a scoop of van', 17, 350.00);
+(28, 'Homemade Apple Pie', 'End your meal on a comforting note with a slice of warm, flaky apple pie, served with a scoop of van', 17, 350.00),
+(29, 'Bengali Biryani', 'A fragrant and flavorful rice dish cooked with tender pieces of marinated chicken, mutton, or shrimp, mixed with aromatic spices, saffron, and garnished with fried onions and boiled eggs. Served with ', 15, 250.00),
+(30, 'Hilsha Fish Curry', 'A Bangladeshi delicacy featuring succulent pieces of Hilsha fish simmered in a rich and spicy mustard sauce, served with steamed rice or paratha.', 15, 100.00),
+(31, 'Chingri Malai Curry', 'Jumbo prawns cooked in a creamy coconut milk gravy, infused with green chilies, mustard seeds, and aromatic spices, creating a harmonious blend of flavors.\r\n', 16, 100.00),
+(32, 'Fuchka (Pani Puri)', 'Crispy hollow spheres stuffed with a mixture of spicy tamarind water, mashed potatoes, chickpeas, and a hint of green chili for that perfect combination of sweet, spicy, and tangy.', 2, 150.00),
+(33, 'Kacchi Biryani', 'A traditional Bangladeshi rice dish made with marinated mutton, aromatic spices, and uncooked rice, slow-cooked to perfection, creating layers of flavor and tenderness.', 22, 250.00),
+(34, 'Mutton Bhuna', 'Succulent pieces of mutton slow-cooked with a blend of spices, tomatoes, and caramelized onions, resulting in a rich and hearty curry.', 22, 280.00),
+(35, 'Luchi with Alu Dom', 'Soft, deep-fried Bengali bread (luchi) served with a flavorful and spicy potato curry (alu dom) that\'s sure to tantalize your taste buds.', 23, 50.00),
+(36, 'Bhorta Platter', 'A variety of mashed and spiced vegetables, including eggplant (baingan bhorta), potatoes (aloo bhorta), and lentils (dal bhorta), served with rice and clarified butter (ghee).', 23, 100.00),
+(37, 'Sondesh', 'A popular Bengali dessert made from fresh paneer (chhena), sweetened with sugar and flavored with cardamom, saffron, and pistachios, crafted into delightful bite-sized treats.', 24, 30.00),
+(38, 'Bengali Mishti Doi', 'Creamy and sweet yogurt infused with caramelized sugar, served in earthen pots (matka) for an authentic and delectable dessert experience.', 31, 50.00),
+(39, 'Pitha', 'A selection of traditional Bangladeshi rice cakes, both sweet and savory, made from rice flour and often filled with ingredients like jaggery, coconut, or molasses.', 25, 50.00),
+(40, 'Kheer', 'A comforting rice pudding delicately flavored with cardamom, topped with slivers of almonds and pistachios, a sweet ending to your meal.', 24, 100.00);
 
 -- --------------------------------------------------------
 
@@ -166,7 +178,8 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `contact`, `
 (1, 'abc', 'def', 'abc@gmail.com', '', '1234'),
 (2, 'Sami', 'Nayeem', 'sami@gmail.com', '', '$2y$10$.E0hFpMx6oLd2MhW4DML5uebOKb4btmDK1R..Wesv/8Xn4GpYx3eC'),
 (4, 'Fardin', 'Bhuiyan', 'fardin@gmail.com', '', '$2y$10$1CywMTZadmgFP3csGT0kieSNSjcjJrEpD5fQAnBqudRjyVY1jAH0u'),
-(5, 'Humaira', 'Tabassum', 'humaira@gmail.com', '+8801234567890', '$2y$10$eGRD2.pRobIFfMojHNrTU.IRFZJxjkxuOV5hLQcX20cSa5DpM4lve');
+(5, 'Humaira', 'Tabassum', 'humaira@gmail.com', '+8801234567890', '$2y$10$eGRD2.pRobIFfMojHNrTU.IRFZJxjkxuOV5hLQcX20cSa5DpM4lve'),
+(6, 'Rahim', 'Ahmed', 'rahim@gmail.com', '+8801234567890', '$2y$10$zrOYh6vtc49TIOSdo/LbXOfVbyK7WasVTV3StRy1dgcA5Ls6a.vgS');
 
 --
 -- Indexes for dumped tables
@@ -200,7 +213,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `restaurants`
@@ -212,7 +225,7 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

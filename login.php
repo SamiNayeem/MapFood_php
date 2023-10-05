@@ -22,13 +22,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 header("location: dashboard.php#restaurantSelection");
             } 
             else{
-                $showError = "Invalid Credentials";
+                // $showError = "Invalid Credentials";
+                echo '<script>alert("Invalid Credentials")</script>';
+                header("refresh:0; url=login.php#login");
             }
         }
         
     } 
     else{
-        $showError = "Invalid Credentials";
+        // $showError = "Invalid Credentials";
+        echo '<script>alert("Invalid Credentials")</script>';
+        header("refresh:0; url=login.php#login");
     }
 }
 ?>
